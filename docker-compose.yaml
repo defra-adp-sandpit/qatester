@@ -1,0 +1,19 @@
+services:
+  qatester:
+    build:
+      context: .
+      target: production
+    image: qatester
+    container_name: qatester
+    depends_on:
+      - qatester-postgres
+    environment:
+      APPINSIGHTS_CLOUDROLE: qatester-local
+      APPINSIGHTS_CONNECTIONSTRING: ${APPINSIGHTS_CONNECTIONSTRING}
+
+  qatester-postgres:
+    image: postgres:11.4-alpine
+    environment:
+      POSTGRES_DB: qatester
+      POSTGRES_PASSWORD: ppp
+      POSTGRES_USERNAME: postgres

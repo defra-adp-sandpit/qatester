@@ -1,0 +1,2 @@
+{{- define "qatester.container" -}}
+{{- end -}}
